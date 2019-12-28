@@ -23,6 +23,7 @@ const createSendToken = (user, statusCode, req, res) => {
     secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
   });
 
+
   user.password = undefined;
 
   res.status(statusCode).json({
@@ -32,7 +33,6 @@ const createSendToken = (user, statusCode, req, res) => {
       user
     }
   });
-};
 
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
